@@ -66,8 +66,8 @@ SELECT
     pr.vehicle_weight,
     pr.vehicle_dimensions,
     p.salesrep_id,
-    p.transaction_amount--,
-    --p.purchase_datetime
+    p.transaction_amount,
+    p.purchase_datetime
 
 FROM purchases p
 
