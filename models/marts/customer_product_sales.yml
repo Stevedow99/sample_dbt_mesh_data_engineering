@@ -1,0 +1,107 @@
+version: 2
+
+models:
+  - name: customer_product_sales
+    latest_version: 1
+    description: "This model joins the purchases table with products and customers tables to provide detailed information on sales transactions, including customer details and product specifics."
+
+    # defining this models configurations
+    config:
+
+      # we tag this model to certain teams
+      tags: ['product', 'revenue']
+
+    # define the group if belongs to
+    group: Data Engineering
+
+    # define the access type public == can be used outside current project, private == only within the bounds of this project
+    access: public
+
+
+    columns:
+      - name: transaction_id
+        description: "Unique identifier for each transaction."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "Unique identifier of the customer involved in the transaction."
+        tests:
+          - not_null
+
+      - name: fname
+        description: "First name of the customer."
+
+      - name: lname
+        description: "Last name of the customer."
+
+      - name: address
+        description: "Residential address of the customer."
+
+      - name: city
+        description: "City of the customer's residence."
+
+      - name: state
+        description: "State of the customer's residence."
+
+      - name: zip
+        description: "ZIP or postal code of the customer's residence."
+
+      - name: email
+        description: "Email address of the customer."
+        tests:
+          - not_null
+
+      - name: phone
+        description: "Phone number of the customer."
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "Unique identifier of the product sold."
+        tests:
+          - not_null
+
+      - name: vehicle_name
+        description: "Name of the product sold, particularly useful when the product is a vehicle."
+
+      - name: vehicle_category
+        description: "Category of the vehicle."
+
+      - name: vehicle_color
+        description: "Color of the vehicle."
+
+      - name: vehicle_weight
+        description: "Weight of the vehicle in kilograms."
+
+      - name: vehicle_dimensions
+        description: "Dimensions of the vehicle (LxWxH)."
+
+      - name: salesrep_id
+        description: "Unique identifier of the sales representative who facilitated the transaction."
+        tests:
+          - not_null
+
+      - name: transaction_amount
+        description: "The amount of the transaction."
+        tests:
+          - not_null
+
+      - name: purchase_datetime
+        description: "The date and time when the transaction occurred."
+        tests:
+          - not_null
+
+    # Declare the versions, and highlight the diffs
+    versions:
+    
+      - v: 1
+        # Matches what's above -- nothing more needed
+    
+      - v: 2
+        # Removed a column -- this is the breaking change!
+        columns:
+          # This means: use the 'columns' list from above, but exclude country_name
+          - include: all
+            exclude: [purchase_datetime]

@@ -1,0 +1,6 @@
+# First, define the group and owner
+groups:
+  - name: Data Engineering
+    owner:
+      name: Data Engineering Team
+      email: dataengineeringteam@acmeco.com
