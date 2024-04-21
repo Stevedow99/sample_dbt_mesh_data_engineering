@@ -4,17 +4,19 @@
 
 #### This repo is one of three repos used to demo and sample dbt Cloud mesh which includes:
 - [Cross Project dbt References](https://docs.getdbt.com/docs/collaborate/govern/project-dependencies#how-to-write-cross-project-ref)
-- [dbt Model Governance]()
-    - [dbt Model Versions]()
-    - [dbt Model Contracts]()
-    - [dbt Model Access]()
+- dbt Model Governance
+    - [dbt Model Versions](https://docs.getdbt.com/docs/collaborate/govern/model-versions)
+    - [dbt Model Contracts](https://docs.getdbt.com/docs/collaborate/govern/model-contracts)
+    - [dbt Model Access](https://docs.getdbt.com/docs/collaborate/govern/model-access#access-modifiers)
+        - [dbt Model Groups](https://docs.getdbt.com/docs/collaborate/govern/model-access#groups)
+    
 
 
-## dbt Project Level dependencies (as shown in dbt Cloud Explorer)
+## dbt Project Level dependencies (as shown in [dbt Cloud Explorer](https://docs.getdbt.com/docs/collaborate/explore-projects))
  ![Project Level Dependencies](./documentation/dbt_cloud_mesh_all_projs.png)
 
-## This project with downstream project dependencies (as shown in dbt Cloud Explorer)
+## This project with downstream project dependencies (as shown in [dbt Cloud Explorer](https://docs.getdbt.com/docs/collaborate/explore-projects))
  ![Data Engineering With Downstream Dependencies](./documentation/dbt_cloud_mesh_de.png)
 
- ## Downstream projects showing this project as an upstream dependency (as shown in dbt Cloud Explorer)
+ ## Downstream projects showing this project as an upstream dependency (as shown in [dbt Cloud Explorer](https://docs.getdbt.com/docs/collaborate/explore-projects))
  ![Downstream Project with Upstream Dependencies](./documentation/dbt_cloud_mesh_pa.png)
