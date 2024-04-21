@@ -10,6 +10,10 @@ models:
       # we tag this model to certain teams
       tags: ['sales_team', 'revenue']
 
+      # we know we have downstream consumers of this model and we want to strcitly enforce a data contract to ensure our consumers can trust it
+      contract:
+        enforced: true
+
     # define the group if belongs to
     group: Data Engineering
 
@@ -19,72 +23,95 @@ models:
     columns:
       - name: transaction_id
         description: "Unique identifier for each transaction."
+        data_type: string
+        constraints:
+          - type: not_null
+          - type: primary_key
+          - type: unique
         tests:
           - unique
-          - not_null
 
       - name: customer_id
         description: "Unique identifier of the customer involved in the transaction."
-        tests:
-          - not_null
+        data_type: int
+        constraints:
+          - type: not_null
 
       - name: customer_first_name
+        data_type: string
         description: "First name of the customer."
 
       - name: customer_last_name
+        data_type: string
         description: "Last name of the customer."
 
       - name: customer_address
+        data_type: string
         description: "Residential address of the customer."
 
       - name: customer_city
+        data_type: string
         description: "City of the customer's residence."
 
       - name: customer_state
+        data_type: string
         description: "State of the customer's residence."
 
       - name: customer_zip
+        data_type: int
         description: "ZIP or postal code of the customer's residence."
 
       - name: customer_email
+        data_type: string
         description: "Email address of the customer."
-        tests:
-          - not_null
+        constraints:
+          - type: not_null
+
 
       - name: customer_phone
+        data_type: string
         description: "Phone number of the customer."
-        tests:
-          - not_null
+        constraints:
+          - type: not_null
+
 
       - name: product_id
+        data_type: string
         description: "Unique identifier of the product sold."
-        tests:
-          - not_null
+        constraints:
+          - type: not_null
 
       - name: salesrep_id
+        data_type: string
         description: "Unique identifier of the sales representative who made the sale."
-        tests:
-          - not_null
+        constraints:
+          - type: not_null
 
       - name: salesrep_name
+        data_type: string
         description: "Name of the sales representative."
 
       - name: salesrep_start_date
+        data_type: date
         description: "The start date of the sales representative in the company."
 
       - name: is_trained_in_new_sales_program
+        data_type: boolean
         description: "Indicates whether the sales representative is trained in new sales programs."
         tests:
           - accepted_values:
               values: [true, false]
 
       - name: salesrep_region
+        data_type: string
         description: "Region where the sales representative operates."
 
       - name: salesrep_email
+        data_type: string
         description: "Email address of the sales representative."
 
       - name: transaction_amount
+        data_type: int
         description: "The amount of money exchanged in the transaction."
-        tests:
-          - not_null
+        constraints:
+          - type: not_null
